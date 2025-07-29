@@ -1,6 +1,7 @@
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
 ---
+# yamllint disable-line rule:truthy
 name: MegaLinter
 
 # Trigger mega-linter at every push. Action will also be visible from
@@ -35,19 +36,19 @@ env:
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
-
+# yamllint disable rule:indentation
 jobs:
 
   # Call eslint in a separate action until MegaLinter supports eslint v9 :)
   eslint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Install modules
-      run: npm ci
-    - name: Run ESLint
-      run: npm run eslint
-      continue-on-error: true # Temporary until eslint issues are fixed !
+      - uses: actions/checkout@v4
+      - name: Install modules
+        run: npm ci
+      - name: Run ESLint
+        run: npm run eslint
+        continue-on-error: true # Temporary until eslint issues are fixed !
 
   megalinter:
     name: MegaLinter
