@@ -1,5 +1,6 @@
 {
   "name": "salesforce-inspector",
+  "version": "1.26.0",
   "scripts": {
     "eslint": "eslint .",
     "firefox-dev-build": "node scripts/dev-build.js firefox",
