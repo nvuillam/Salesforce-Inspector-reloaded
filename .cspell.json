@@ -7,7 +7,13 @@
     ".vscode",
     "megalinter",
     "package-lock.json",
-    "report"
+    "report",
+    "**/addon/lib/**",
+    "**/addon/styles/**",
+    "**/react-dom.js",
+    "**/react-dom.min.js",
+    "**/react.js",
+    "**/react.min.js"
   ],
   "language": "en",
   "noConfigSearch": true,

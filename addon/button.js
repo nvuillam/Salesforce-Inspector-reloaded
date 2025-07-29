@@ -85,7 +85,7 @@ function initButton(sfHost, inInspector) {
     }
   }
 
-  // Calulates default position, left to right for horizontal, and adds boundaries to keep it on screen
+  // Calculates default position, left to right for horizontal, and adds boundaries to keep it on screen
   function calcPopup({popupArrowOrientation: o, popupArrowPosition: pos}) {
     o = o || "vertical"; // Default to vertical
     const isVertical = o === "vertical";
