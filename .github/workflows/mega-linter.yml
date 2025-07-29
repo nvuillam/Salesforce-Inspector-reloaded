@@ -14,6 +14,7 @@ on:
     branches:
       - main
       - master
+      - features/security-stable # use for setup
 
 # Comment env block if you do not want to apply fixes
 env:
