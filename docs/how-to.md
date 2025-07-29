@@ -264,7 +264,7 @@ are displayed.
 From the option page, you can customize the default favicon by:
 
 - a predefined color name among [those values](https://www.w3schools.com/tags/ref_colornames.asp) or any HTML color code you want (ie `#FF8C00`).
-- a custom favicon url (ie "https://stackoverflow.com/favicon.ico")
+- a custom favicon url (ie "<https://stackoverflow.com/favicon.ico>")
 
 The customization is linked to the org, it means you can have different colors for DEV and UAT env for example.
 
@@ -391,7 +391,7 @@ From the User tab in the popup, click on the user language flag to display the a
 
 ## Generate a package.xml from a deployment
 
-From a	DeployRequest record, click on the `Generate package.xml` button to download the package.xml for this deployment.
+From a DeployRequest record, click on the `Generate package.xml` button to download the package.xml for this deployment.
 > [!NOTE]
 > If you retrieve the related metadata it may have been modified since the deployment, so you are not sure to retrieve what was deployed.
 
