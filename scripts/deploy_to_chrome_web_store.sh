@@ -56,11 +56,11 @@ UPLOAD_RESULT=$(curl \
 	jq '.')
 
 if [[ $(echo $UPLOAD_RESULT | jq '.uploadState') == '"SUCCESS"' ]]; then
-	log_message "2.2.1) Upload succesful! - v$SOURCE_VERSION_NUMBER"
+	log_message "2.2.1) Upload successful! - v$SOURCE_VERSION_NUMBER"
 else
 	log_message "2.2.1) Upload failed"
 	if [[ $(echo $UPLOAD_RESULT | jq '.itemError[0].error_code') == '"PKG_INVALID_VERSION_NUMBER"' ]]; then
-		log_message "2.2.2) But that's ok, upload should only suceed on version increments."
+		log_message "2.2.2) But that's ok, upload should only succeed on version increments."
 		log_message "$(echo $UPLOAD_RESULT | jq '.itemError[0].error_detail')"
 	else
 		log_error "2.2.2) With an unexpected reason:"
@@ -81,7 +81,7 @@ if [[ $ENVIRONMENT_TYPE == "BETA" ]]; then
 		jq '.')
 
 	if [[ $(echo $PUBLISH_RESULT | jq '.status[0]') == '"OK"' ]]; then
-		log_message "2.3.1) Publish succesful!"
+		log_message "2.3.1) Publish successful!"
 	else
 		log_error "2.3.1) Publish failed"
 		log_detail "$PUBLISH_RESULT"

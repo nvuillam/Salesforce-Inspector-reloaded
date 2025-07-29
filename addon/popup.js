@@ -770,7 +770,7 @@ class AllDataBoxUsers extends React.PureComponent {
 
     try {
       setIsLoading(true);
-      //const userResult = await sfConn.rest("/services/data/v" + apiVersion + "/sobjects/User/" + selectedUserId); //Does not return profile details. Query call is therefore prefered
+      //const userResult = await sfConn.rest("/services/data/v" + apiVersion + "/sobjects/User/" + selectedUserId); //Does not return profile details. Query call is therefore preferred
       const userResult = await sfConn.rest("/services/data/v" + apiVersion + "/composite", {method: "POST", body: compositeQuery});
       let userDetail = userResult.compositeResponse.find((elm) => elm.httpStatusCode == 200).body.records[0];
       userDetail.debugModeActionLabel = userDetail.UserPreferencesUserDebugModePref ? "Disable" : "Enable";
@@ -1076,7 +1076,7 @@ class AllDataBoxShortcut extends React.PureComponent {
       });
 
       let metadataShortcutSearchOptions = localStorage.getItem("metadataShortcutSearchOptions");
-      //handle previous option which was not detailled by metadata type
+      //handle previous option which was not detailed by metadata type
       let metadataShortcutSearch = localStorage.getItem("metadataShortcutSearch") != "false";
       if (metadataShortcutSearchOptions) {
         metadataShortcutSearchOptions = JSON.parse(metadataShortcutSearchOptions);
@@ -1430,10 +1430,10 @@ class UserDetails extends React.PureComponent {
 
   toggleDisplay(event, refKey) {
     event.target.style.display = "none";
-    this.fectchLocalesAndLanguages(refKey);
+    this.fetchLocalesAndLanguages(refKey);
   }
 
-  fectchLocalesAndLanguages(refKey){
+  fetchLocalesAndLanguages(refKey){
     if (!this.state.userLocales){
       sfConn.rest(`/services/data/v${apiVersion}/sobjects/User/describe`, {method: "GET"}).then(res => {
         let userLanguages = res.fields.find(field => field.name === "LanguageLocaleKey");
@@ -1459,7 +1459,7 @@ class UserDetails extends React.PureComponent {
     try {
       const expirationDate = new Date(DTnow.getTime() + debugTimeInMs);
       let query = "query/?q=+SELECT+Id,ExpirationDate+FROM+TraceFlag+"
-                  + "WHERE+TracedEntityid='" + userId + "'+"
+                  + "WHERE+TracedEntityId='" + userId + "'+"
                   + "AND+DebugLevel.DeveloperName='" + debugLogDebugLevel + "'+"
                   + "AND+StartDate<" + DTnow.toISOString() + "+"
                   + "AND+ExpirationDate<" + expirationDate.toISOString();

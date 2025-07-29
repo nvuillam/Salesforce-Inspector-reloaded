@@ -21,7 +21,7 @@ export async function popupTest(test) {
   assertEquals("001i0000007BlV0AAK", getRecordId(new URL("https://na1.visual.force.com/apex/VfPage?id=001i0000007BlV0AAK"))); // visualforce with 18 character ID
   assertEquals("001i0000007BlV0", getRecordId(new URL("https://na1.visual.force.com/apex/VfPage?scontrolCaching=1&id=001i0000007BlV0&retURL=xyz"))); // visualforce with other parameters
   assertEquals("001i0000007BlV0", getRecordId(new URL("https://mydomain--c.na1.visual.force.com/apex/VfPage?id=001i0000007BlV0"))); // visualforce with My Domain
-  assertEquals("a37E0000000DV1c", getRecordId(new URL("https://bmcservicedesk.na9.visual.force.com/apex/RemedyforceConsole?record_id=a37E0000000DV1c&objectName=Incident__c&inctype=Incident#false"))); // visuflforce page with non-standard parameter name
+  assertEquals("a37E0000000DV1c", getRecordId(new URL("https://bmcservicedesk.na9.visual.force.com/apex/RemedyforceConsole?record_id=a37E0000000DV1c&objectName=Incident__c&inctype=Incident#false"))); // visualforce page with non-standard parameter name
   assertEquals("001i0000007BlV0", getRecordId(new URL("https://na1.visual.force.com/apex/VfPage?id=001i0000007BlV0&other=a37E0000000DV1c"))); // prefer standard parameter name
   assertEquals("a37E0000000DV1c", getRecordId(new URL("https://na1.visual.force.com/apex/VfPage?other=001i0000007BlV0&id=a37E0000000DV1c"))); // prefer standard parameter name
   assertEquals("001i0000007BlV0", getRecordId(new URL("https://na1.visual.force.com/apex/VfPage?other=001i0000007BlV0"))); // another non-standard name
