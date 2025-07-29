@@ -23,7 +23,7 @@ export default [
       },
     },
     ignores: [
-      "addon/lib/*",
+      "addon/lib/**",
       "addon/react-dom.js",
       "addon/react-dom.min.js",
       "addon/react.js",
