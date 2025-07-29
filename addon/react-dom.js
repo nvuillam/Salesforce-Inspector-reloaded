@@ -1793,9 +1793,9 @@ var DOMPropertyInjection = {
   }
 };
 
-/* eslint-disable max-len */
+ 
 var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
-/* eslint-enable max-len */
+ 
 
 /**
  * DOMProperty exports lookup objects that can be used like functions:
@@ -5373,7 +5373,7 @@ var ReactDOM = {
   unmountComponentAtNode: ReactMount.unmountComponentAtNode,
   version: ReactVersion,
 
-  /* eslint-disable camelcase */
+   
   unstable_batchedUpdates: ReactUpdates.batchedUpdates,
   unstable_renderSubtreeIntoContainer: renderSubtreeIntoContainer
 };
@@ -7609,10 +7609,10 @@ function getModernOffsets(node) {
   // non-anonymous divs and catch any error that may otherwise arise. See
   // https://bugzilla.mozilla.org/show_bug.cgi?id=208427
   try {
-    /* eslint-disable no-unused-expressions */
+     
     currentRange.startContainer.nodeType;
     currentRange.endContainer.nodeType;
-    /* eslint-enable no-unused-expressions */
+     
   } catch (e) {
     return null;
   }
@@ -13981,7 +13981,7 @@ _assign(SyntheticEvent.prototype, {
     if (event.preventDefault) {
       event.preventDefault();
     } else if (typeof event.returnValue !== 'unknown') {
-      // eslint-disable-line valid-typeof
+       
       event.returnValue = false;
     }
     this.isDefaultPrevented = emptyFunction.thatReturnsTrue;
@@ -13996,7 +13996,7 @@ _assign(SyntheticEvent.prototype, {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else if (typeof event.cancelBubble !== 'unknown') {
-      // eslint-disable-line valid-typeof
+       
       // The ChangeEventPlugin registers a "propertychange" event for
       // IE. This event does not support bubbling or cancelling, and
       // any references to cancelBubble throw "Member not found".  A
@@ -14052,7 +14052,7 @@ SyntheticEvent.Interface = EventInterface;
 
 if ("development" !== 'production') {
   if (isProxySupported) {
-    /*eslint-disable no-func-assign */
+     
     SyntheticEvent = new Proxy(SyntheticEvent, {
       construct: function (target, args) {
         return this.apply(target, Object.create(target.prototype), args);
@@ -14070,7 +14070,7 @@ if ("development" !== 'production') {
         });
       }
     });
-    /*eslint-enable no-func-assign */
+     
   }
 }
 /**
@@ -17255,7 +17255,7 @@ module.exports = camelizeStyleName;
 
 var isTextNode = _dereq_(152);
 
-/*eslint-disable no-bitwise */
+ 
 
 /**
  * Checks if a given DOM node contains or is another DOM node.
@@ -18015,7 +18015,7 @@ module.exports = performanceNow;
  * 
  */
 
-/*eslint-disable no-self-compare */
+ 
 
 'use strict';
 
@@ -18139,7 +18139,7 @@ if ("development" !== 'production') {
 module.exports = warning;
 },{"142":142}],158:[function(_dereq_,module,exports){
 'use strict';
-/* eslint-disable no-unused-vars */
+ 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -18160,7 +18160,7 @@ function shouldUseNative() {
 		// Detect buggy property enumeration order in older V8 versions.
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line
+		var test1 = new String('abc');   
 		test1[5] = 'de';
 		if (Object.getOwnPropertyNames(test1)[0] === '5') {
 			return false;
