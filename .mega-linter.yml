@@ -30,10 +30,11 @@ DISABLE_ERRORS_LINTERS:
   - HTML_DJLINT
   - HTML_HTMLHINT
 
+FILTER_REGEX_EXCLUDE: (addon\/lib\/.*|addon\/react-dom\.js|addon\/react-dom\.min\.js|addon\/react\.js|addon\/react\.min\.js)
+
 JAVASCRIPT_DEFAULT_STYLE: prettier
 TYPESCRIPT_DEFAULT_STYLE: prettier
 
 SHOW_ELAPSED_TIME: true
 BASH_SHELLCHECK_ARGUMENTS: ["--severity", "warning"]
 COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN: 96
-
