@@ -1,0 +1,8 @@
+addon/lib/**
+addon/react-dom.js
+addon/react-dom.min.js
+addon/react.js
+addon/react.min.js
+venv/*
+docs/venv/*
+target/
