@@ -36,6 +36,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+
+  # Call eslint in a separate action until MegaLinter supports eslint v9 :)
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install modules
+      run: npm ci
+    - name: Run ESLint
+      run: eslint . --ext .js,.jsx,.ts,.tsx
+
   megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest
