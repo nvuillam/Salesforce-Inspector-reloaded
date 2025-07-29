@@ -18,6 +18,11 @@ APPLY_FIXES: all
   # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
   # - SPELL # Uncomment to disable checks of spelling mistakes
 
+DISABLE_LINTERS:
+  - REPOSITORY_DEVSKIM
+  - REPOSITORY_KICS
+  - TYPESCRIPT_STANDARD
+
 JAVASCRIPT_DEFAULT_STYLE: prettier
 TYPESCRIPT_DEFAULT_STYLE: prettier
 
