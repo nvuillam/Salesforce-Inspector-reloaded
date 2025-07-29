@@ -2,7 +2,7 @@
 // This script makes Release builds of Salesforce Inspector.
 // Dev builds use a different method.
 // This script must be run through "npm run" so the PATH includes NPM dependencies.
-"use strict";
+
 const fs = require("fs-extra");
 const replace = require("replace-in-file");
 const zipdir = require("zip-dir");

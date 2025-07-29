@@ -1,0 +1,19 @@
+{
+  "threshold": 0,
+  "reporters": ["html", "markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv/**",
+    "**/*cache*/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/report/**",
+    "**/*.svg",
+    "**/*.test.js",
+    "**/addon/metadata-retrieve-legacy.js",
+    "**/addon/slds-spinner.css"
+
+  ]
+}

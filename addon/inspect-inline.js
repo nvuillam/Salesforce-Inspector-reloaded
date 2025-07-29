@@ -1,5 +1,5 @@
 /* exported showStdPageDetails */
-"use strict";
+
 function showStdPageDetails(metadataResponse, allFieldSetupLinks) {
   let fieldDetailsByLabel = new Map();
   // Loop through all label elements, add event listeners
@@ -97,7 +97,7 @@ function showStdPageDetails(metadataResponse, allFieldSetupLinks) {
           output.appendChild(Ea("div", {"class": "insext-formula"}, [T(fieldDetail.calculatedFormula)]));
         }
         let setupLinks = allFieldSetupLinks.get(fieldDetail.name);
-        let lightningFieldSetupLink = Ea("a", {"href": setupLinks.lightningSetupLink}, [T("Lignting setup")]);
+        let lightningFieldSetupLink = Ea("a", {"href": setupLinks.lightningSetupLink}, [T("Lightning setup")]);
         output.appendChild(lightningFieldSetupLink);
         output.appendChild(T(" "));
         let classicFieldSetupLink = Ea("a", {"href": setupLinks.classicSetupLink}, [T("Classic setup")]);

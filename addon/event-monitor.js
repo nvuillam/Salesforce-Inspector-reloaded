@@ -32,7 +32,7 @@ class Model {
     this.selectedChannel = "";
     this.channelListening = "";
     this.channelError = "";
-    this.isListenning = false;
+    this.isListening = false;
     this.selectedEvent;
     this.selectedEventIndex = undefined;
     this.replayId = -1;
@@ -127,8 +127,8 @@ class App extends React.Component {
     this.getEventChannels = this.getEventChannels.bind(this);
     this.onChannelTypeChange = this.onChannelTypeChange.bind(this);
     this.onChannelSelection = this.onChannelSelection.bind(this);
-    this.onSuscribeToChannel = this.onSuscribeToChannel.bind(this);
-    this.onUnsuscribeToChannel = this.onUnsuscribeToChannel.bind(this);
+    this.onSubscribeToChannel = this.onSubscribeToChannel.bind(this);
+    this.onUnsubscribeToChannel = this.onUnsubscribeToChannel.bind(this);
     this.onToggleHelp = this.onToggleHelp.bind(this);
     this.onToggleMetrics = this.onToggleMetrics.bind(this);
     this.onMetricsClick = this.onMetricsClick.bind(this);
@@ -237,7 +237,7 @@ class App extends React.Component {
     model.didUpdate();
   }
 
-  async onSuscribeToChannel() {
+  async onSubscribeToChannel() {
     let {model} = this.props;
     model.spinnerCount++;
     model.didUpdate();
@@ -248,7 +248,7 @@ class App extends React.Component {
       return;
     }
     model.channelError = "";
-    model.isListenning = true;
+    model.isListening = true;
 
     // Create the CometD object.
     const cometd = new CometD();
@@ -284,7 +284,7 @@ class App extends React.Component {
               model.channelListening = "Listening on " + channelSuffix + model.selectedChannel + " ...";
             } else {
               model.channelError = "Error : " + subscribeReply.error;
-              model.isListenning = false;
+              model.isListening = false;
             }
             model.spinnerCount--;
             model.didUpdate();
@@ -294,7 +294,7 @@ class App extends React.Component {
     });
   }
 
-  async onUnsuscribeToChannel() {
+  async onUnsubscribeToChannel() {
     let {model} = this.props;
     model.cometd.unsubscribe(model.subscription, (unsubscribeReply) => {
       console.log("unsubscribeReply");
@@ -303,7 +303,7 @@ class App extends React.Component {
     model.cometd.disconnect((disconnectReply) => {
       if (disconnectReply.successful) {
         model.channelListening = "";
-        model.isListenning = false;
+        model.isListening = false;
         model.didUpdate();
       }
     });
@@ -411,7 +411,7 @@ class App extends React.Component {
     let {model} = this.props;
     model.popConfirmed = true;
     model.confirmPopup = false;
-    this.onSuscribeToChannel();
+    this.onSubscribeToChannel();
   }
 
   confirmPopupNo() {
@@ -423,7 +423,7 @@ class App extends React.Component {
 
   disableSubscribe(){
     let {model} = this.props;
-    return model.isListenning || model.selectedChannel == null;
+    return model.isListening || model.selectedChannel == null;
   }
 
   render() {
@@ -469,7 +469,7 @@ class App extends React.Component {
             h("span", {className: "conf-value"},
               h("select", {value: model.selectedChannelType,
                 onChange: this.onChannelTypeChange,
-                disabled: model.isListenning
+                disabled: model.isListening
               },
               ...channelTypes.map((type) => h("option", {key: type.value, value: type.value}, type.label)
               )
@@ -477,16 +477,16 @@ class App extends React.Component {
             ),
             h("span", {className: "conf-label"}, "Channel :"),
             h("span", {className: "conf-value"},
-              h("select", {value: model.selectedChannel, onChange: this.onChannelSelection, disabled: model.isListenning},
+              h("select", {value: model.selectedChannel, onChange: this.onChannelSelection, disabled: model.isListening},
                 ...model.channels.map((entity) => h("option", {key: entity.name, value: entity.name}, entity.label))
               )
             ),
             h("span", {className: "conf-label"}, "Replay From :"),
             h("span", {className: "conf-value"},
-              h("input", {type: "number", className: "conf-replay-value", value: model.replayId, onChange: this.onReplayIdChange, disabled: model.isListenning})
+              h("input", {type: "number", className: "conf-replay-value", value: model.replayId, onChange: this.onReplayIdChange, disabled: model.isListening})
             ),
-            h("button", {onClick: this.onSuscribeToChannel, title: "Suscribe to channel", disabled: this.disableSubscribe()}, "Subscribe"),
-            h("button", {onClick: this.onUnsuscribeToChannel, title: "Unsuscribe to channel", disabled: !model.isListenning}, "Unsubscribe")
+            h("button", {onClick: this.onSubscribeToChannel, title: "Subscribe to channel", disabled: this.disableSubscribe()}, "Subscribe"),
+            h("button", {onClick: this.onUnsubscribeToChannel, title: "Unsubscribe to channel", disabled: !model.isListening}, "Unsubscribe")
           )
         ),
         h("div", {hidden: !model.showHelp, className: "help-text"},

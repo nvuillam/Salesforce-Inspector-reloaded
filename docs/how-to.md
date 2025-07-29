@@ -134,7 +134,7 @@ If you want to disable the search on the metadata, update related option:
 
 ## Enable / Disable Flow scrollability
 
-Go on a Salesforce flow and check / uncheck the checbox to update navigation scrollability on the Flow Builder
+Go on a Salesforce flow and check / uncheck the checkbox to update navigation scrollability on the Flow Builder
 
 ![2023-09-29_16-01-14 (1)](https://github.com/tprouvot/Salesforce-Inspector-reloaded/assets/35368290/91845a31-8f53-4ea1-b895-4cb036d1bed0)
 
@@ -203,7 +203,7 @@ Since the plugin's api version is only updated when all productions have been up
 ## Download Event Log Files
 
 To make your life easier and avoid third party tools or login to ELF website, we implemented the download option from the data export page.
-When quering EventLogFile, add the "LogFile" field in the query and click on the value to download corresponding log.
+When querying EventLogFile, add the "LogFile" field in the query and click on the value to download corresponding log.
 
 ![2023-11-15_14-32-44 (1)](https://github.com/Annubis45/Salesforce-Inspector-reloaded/assets/35368290/ba1fcbed-8428-495e-b03b-7816320d95df)
 
@@ -264,7 +264,7 @@ are displayed.
 From the option page, you can customize the default favicon by:
 
 - a predefined color name among [those values](https://www.w3schools.com/tags/ref_colornames.asp) or any HTML color code you want (ie `#FF8C00`).
-- a custom favicon url (ie "https://stackoverflow.com/favicon.ico")
+- a custom favicon url (ie "<https://stackoverflow.com/favicon.ico>")
 
 The customization is linked to the org, it means you can have different colors for DEV and UAT env for example.
 
@@ -332,7 +332,7 @@ Example:
 
 ## Hide additional columns in query results
 
-After running a query in the "Data Export" page, you can hide additional columns in the query results. These columns represent the name of the objects included in your query. They are useful to automatically map the fields to the correct object in the "Data Import" page. The columns are hidden in the exported files (CSV or Excel) as well. You can set a default value, using the 'Hide additionnal Object Name Columns by default on Data Export' option ("Options" -> "Data Export" tab).
+After running a query in the "Data Export" page, you can hide additional columns in the query results. These columns represent the name of the objects included in your query. They are useful to automatically map the fields to the correct object in the "Data Import" page. The columns are hidden in the exported files (CSV or Excel) as well. You can set a default value, using the 'Hide additional Object Name Columns by default on Data Export' option ("Options" -> "Data Export" tab).
 
 ![2024-05-16_17-54-24 (1)](https://github.com/guillaumeSF/Salesforce-Inspector-reloaded/assets/166603639/45fda19b-b426-4b11-91cb-4f0fbc5c47d7)
 
@@ -391,7 +391,7 @@ From the User tab in the popup, click on the user language flag to display the a
 
 ## Generate a package.xml from a deployment
 
-From a	DeployRequest record, click on the `Generate package.xml` button to download the package.xml for this deployment.
+From a DeployRequest record, click on the `Generate package.xml` button to download the package.xml for this deployment.
 > [!NOTE]
 > If you retrieve the related metadata it may have been modified since the deployment, so you are not sure to retrieve what was deployed.
 

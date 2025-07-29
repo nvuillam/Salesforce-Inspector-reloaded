@@ -1,0 +1,41 @@
+---
+# Configuration file for MegaLinter
+#
+# See all available variables at https://megalinter.io/latest/config-file/ and in
+# linters documentation
+
+# all, none, or list of linter keys
+APPLY_FIXES: all
+
+# If you use ENABLE variable, all other languages/formats/tooling-formats will
+# be disabled by default
+# ENABLE:
+
+# If you use ENABLE_LINTERS variable, all other linters will be disabled by
+# default
+# ENABLE_LINTERS:
+
+# DISABLE:
+# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+# - SPELL # Uncomment to disable checks of spelling mistakes
+
+DISABLE_LINTERS:
+  - REPOSITORY_DEVSKIM
+  - REPOSITORY_DUSTILOCK
+  - REPOSITORY_KICS
+  - REPOSITORY_TRIVY_SBOM
+  - TYPESCRIPT_STANDARD
+
+DISABLE_ERRORS_LINTERS:
+  - CSS_STYLELINT
+  - HTML_DJLINT
+  - HTML_HTMLHINT
+
+FILTER_REGEX_EXCLUDE: (addon\/lib\/.*|addon\/react-dom\.js|addon\/react-dom\.min\.js|addon\/react\.js|addon\/react\.min\.js)
+
+JAVASCRIPT_DEFAULT_STYLE: prettier
+TYPESCRIPT_DEFAULT_STYLE: prettier
+
+SHOW_ELAPSED_TIME: true
+BASH_SHELLCHECK_ARGUMENTS: ["--severity", "warning"]
+COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN: 96

@@ -2,7 +2,7 @@
 // This script sets up a development environment of Salesforce Inspector.
 // Release builds use a different method.
 // This script must be run through "npm run" so the PATH includes NPM dependencies.
-"use strict";
+
 const fs = require("fs-extra");
 
 let manifest = fs.readJsonSync("addon/manifest-template.json");

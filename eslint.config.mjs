@@ -1,10 +1,16 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
-import {fixupConfigRules} from "@eslint/compat";
+import pluginReact from "eslint-plugin-react";
 
+pluginReactConfig.settings = {
+  react: {
+    version: "15.4.0"
+  }
+};
 
 export default [
+  pluginReactConfig,
   {
     languageOptions: {
       ecmaVersion: 2022,
@@ -12,15 +18,13 @@ export default [
       globals: {
         chrome: "readonly",
         browser: "readonly",
+        process: "readonly",
+        require: "readonly",
         ...globals.browser
       }
     },
-    settings: {
-      react: {
-        version: "detect"
-      },
-    },
     ignores: [
+      "addon/lib/**",
       "addon/react-dom.js",
       "addon/react-dom.min.js",
       "addon/react.js",
@@ -88,8 +92,9 @@ export default [
       "symbol-description": "error",
       "template-curly-spacing": "error",
       "yield-star-spacing": "error"
+    },
+    plugins: {
+      react: pluginReact
     }
   },
-  pluginJs.configs.recommended,
-  ...fixupConfigRules(pluginReactConfig),
 ];

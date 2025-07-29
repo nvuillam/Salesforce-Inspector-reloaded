@@ -270,7 +270,7 @@ class Model {
     this.didUpdate();
   }
 
-  // Used only for requried fields that will prevent us from building a valid API request or definitely cause an error if missing.
+  // Used only for required fields that will prevent us from building a valid API request or definitely cause an error if missing.
   getRequiredMissingFields() {
     let missingFields = [];
 

@@ -2629,7 +2629,7 @@ var ReactPropTypes = {
  * inlined Object.is polyfill to avoid requiring consumers ship their own
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
- 
+
 function is(x, y) {
   // SameValue algorithm
   if (x === y) {
@@ -2641,7 +2641,7 @@ function is(x, y) {
     return x !== x && y !== y;
   }
 }
- 
+
 
 /**
  * We use an Error-like object for backward compatibility as people may call
@@ -3661,7 +3661,7 @@ if ("development" !== 'production') {
 module.exports = warning;
 },{"26":26}],30:[function(_dereq_,module,exports){
 'use strict';
-/* eslint-disable no-unused-vars */
+
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -3682,7 +3682,7 @@ function shouldUseNative() {
 		// Detect buggy property enumeration order in older V8 versions.
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');   
+		var test1 = new String('abc');
 		test1[5] = 'de';
 		if (Object.getOwnPropertyNames(test1)[0] === '5') {
 			return false;

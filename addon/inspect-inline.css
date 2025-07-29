@@ -1,27 +1,27 @@
 .salesforce-inspector-details.sticky {
 	background: linear-gradient(to right, #eee, #ddd);
-	border: solid 1px grey; 
+	border: solid 1px grey;
 }
 .salesforce-inspector-details table {
 	text-align: left;
 	font-size: 0.9em;
 }
 .salesforce-inspector-details.inaccurate {
-	border: solid 3px blue; 	
+	border: solid 3px blue;
 }
 .salesforce-inspector-details .salesforce-inspector-minor {
 	font-size: 0.7em;
 }
 .salesforce-inspector-details {
 	color: #333333;
-	z-index:1; 
-	background: linear-gradient(to right, #ddd, #ccc); 
-	position:absolute; 
-	border: solid 1px grey; 
-	width: 200px; 
-	padding-top: 10px; 
-	margin-top: 10px; 
-	border-radius: 10px; 
+	z-index:1;
+	background: linear-gradient(to right, #ddd, #ccc);
+	position:absolute;
+	border: solid 1px grey;
+	width: 200px;
+	padding-top: 10px;
+	margin-top: 10px;
+	border-radius: 10px;
 	padding: 4px;
 	text-align: center;
 }

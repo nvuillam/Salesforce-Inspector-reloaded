@@ -155,7 +155,7 @@ export let setupLinks = [
   //Platform Tools > Feature Settings > Service > Field Service
   {label: "Field Service Settings", link: "/lightning/setup/FieldServiceSettings/home", section: "Platform Tools > Feature Settings > Service > Field Service", prod: false},
   {label: "Field Service Mobile App Builder", link: "/lightning/setup/FieldServiceAppBuilder/home", section: "Platform Tools > Feature Settings > Service > Field Service", prod: false},
-  {label: "Inbound Social Post Errors", link: "/lightning/setup/InboundSocialPostErrors/homee", section: "Platform Tools > Feature Settings > Service > Field Service", prod: false},
+  {label: "Inbound Social Post Errors", link: "/lightning/setup/InboundSocialPostErrors/home", section: "Platform Tools > Feature Settings > Service > Field Service", prod: false},
 
   //Platform Tools > Feature Settings > Service > Knowledge
   {label: "Data Category Assignments", link: "/lightning/setup/KnowledgeDataCategorySetup/home", section: "Platform Tools > Feature Settings > Service > Knowledge", prod: false},

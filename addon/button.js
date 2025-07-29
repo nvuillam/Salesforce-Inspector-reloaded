@@ -7,7 +7,7 @@
 // sfdcBody: normal Salesforce page
 // ApexCSIPage: Developer Console
 // auraLoadingBox: Lightning / Salesforce1
-// studioBody: Exoperience Builder
+// studioBody: Experience Builder
 // flowContainer: Flow Debugger
 const visualForceDomains = ["visualforce.com", "vf.force.com"];
 if (document.querySelector("body.sfdcBody, body.ApexCSIPage, #auraLoadingBox, #studioBody, #flowContainer") || visualForceDomains.filter(host => location.host.endsWith(host)).length > 0) {
@@ -85,7 +85,7 @@ function initButton(sfHost, inInspector) {
     }
   }
 
-  // Calulates default position, left to right for horizontal, and adds boundaries to keep it on screen
+  // Calculates default position, left to right for horizontal, and adds boundaries to keep it on screen
   function calcPopup({popupArrowOrientation: o, popupArrowPosition: pos}) {
     o = o || "vertical"; // Default to vertical
     const isVertical = o === "vertical";
@@ -170,7 +170,7 @@ function initButton(sfHost, inInspector) {
         //most of the time
         bannerContainer.appendChild(envNameBanner);
       } else {
-        //when login as is displayed the banner is not reachable without mutation obersver
+        //when login as is displayed the banner is not reachable without mutation observer
         const bannerSelector = "div.slds-color__background_gray-1.slds-text-align_center.slds-size_full.slds-text-body_regular.oneSystemMessage";
         observeElement(bannerSelector, (banner) => {
           banner.appendChild(envNameBanner);
