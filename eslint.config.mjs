@@ -12,6 +12,8 @@ export default [
       globals: {
         chrome: "readonly",
         browser: "readonly",
+        process: "readonly",
+        require: "readonly",
         ...globals.browser
       }
     },
@@ -21,6 +23,7 @@ export default [
       },
     },
     ignores: [
+      "addon/lib/*",
       "addon/react-dom.js",
       "addon/react-dom.min.js",
       "addon/react.js",
