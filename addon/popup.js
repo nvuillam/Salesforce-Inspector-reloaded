@@ -11,6 +11,7 @@ const RECENT_ITEMS_RENDERED_COUNT = 100;
 
 let h = React.createElement;
 if (typeof browser === "undefined") {
+  // eslint-disable-next-line no-var -- var is required here: `let` would be block-scoped and not provide the global fallback
   var browser = chrome;
 }
 
@@ -329,7 +330,6 @@ class App extends React.PureComponent {
     }
   }
   componentDidMount() {
-    let {sfHost} = this.props;
     addEventListener("message", this.onContextUrlMessage);
     addEventListener("keydown", this.onShortcutKey);
     parent.postMessage({insextLoaded: true}, "*");
@@ -999,8 +999,6 @@ class AllDataBox extends React.PureComponent {
 
     // Check if popup just became expanded or Objects tab just became active
     const popupJustExpanded = !prevProps.isPopupExpanded && this.props.isPopupExpanded;
-    const objectsTabJustActivated = prevState.activeSearchAspect !== activeSearchAspect
-      && activeSearchAspect === this.SearchAspectTypes.sobject;
 
     if (prevState.activeSearchAspect !== activeSearchAspect) {
       switch (activeSearchAspect) {
@@ -1352,6 +1350,7 @@ class AllDataBoxUsers extends React.PureComponent {
       const merged = Constants.USER_SEARCH_EXCLUSIONS_CHECKBOXES.map(o => ({
         name: o.name,
         label: o.label,
+        // eslint-disable-next-line @eslint-react/no-access-state-in-setstate -- this is the setState callback, which runs after the update
         checked: this.state[o.stateKey],
       }));
       localStorage.setItem(sfHost + Constants.USER_SEARCH_EXCLUSIONS_KEY, JSON.stringify(merged));
@@ -1369,7 +1368,7 @@ class AllDataBoxUsers extends React.PureComponent {
     try {
       const parsed = JSON.parse(userSearchExclusions);
       return Object.fromEntries(Constants.USER_SEARCH_EXCLUSIONS_CHECKBOXES.map(o => [o.stateKey, parsed.find(cb => cb.name === o.name)?.checked || false]));
-    } catch (e) {
+    } catch {
       return defaultExclusions;
     }
   }
@@ -1420,7 +1419,7 @@ class AllDataBoxUsers extends React.PureComponent {
       }
       const enabledSearchOptions = parsed.filter(field => field && field.name && field.checked === true);
       return enabledSearchOptions.length > 0 ? enabledSearchOptions : defaultFields;
-    } catch (e) {
+    } catch {
       return defaultFields;
     }
   }
@@ -1741,7 +1740,6 @@ class AllDataBoxSObject extends React.PureComponent {
 
   loadRecordIdDetails() {
     let {selectedValue} = this.state;
-    let {sfHost} = this.props;
     //If a recordId is selected and the object supports regularApi
     if (
       selectedValue
@@ -2503,7 +2501,7 @@ class AllDataBoxShortcut extends React.PureComponent {
       let metadataShortcutSearchOptions = localStorage.getItem(
         "metadataShortcutSearchOptions"
       );
-      //handle previous option which was not detailled by metadata type
+      //handle previous option which was not detailed by metadata type
       let metadataShortcutSearch
         = localStorage.getItem("metadataShortcutSearch") != "false";
       if (metadataShortcutSearchOptions) {
@@ -2807,7 +2805,7 @@ class AllDataBoxOrg extends React.PureComponent {
   getApiVersion(instanceStatus) {
     let {sfHost} = this.props;
     if (instanceStatus) {
-      let apiVersion = instanceStatus.releaseNumber.substring(0, 3) / 2 - 64;
+      let apiVersion = (instanceStatus.releaseNumber.substring(0, 3) / 2) - 64;
       //store it for maximum version allowed
       sessionStorage.setItem(
         sfHost + "_latestApiVersionFromOrg",
@@ -3158,7 +3156,7 @@ class UserDetails extends React.PureComponent {
         debugTimeInMs
       );
       /*If an old trace flag is found on the user and with this debug level
-       *Update the trace flag extending the experiation date.
+       *Update the trace flag extending the expiration date.
        */
       if (traceFlags.size > 0) {
         await this.extendTraceFlag(traceFlags.records[0].Id, DTnow, debugTimeInMs);
@@ -3216,10 +3214,10 @@ class UserDetails extends React.PureComponent {
 
   toggleDisplay(event, refKey) {
     event.target.style.display = "none";
-    this.fectchLocalesAndLanguages(refKey);
+    this.fetchLocalesAndLanguages(refKey);
   }
 
-  fectchLocalesAndLanguages(refKey) {
+  fetchLocalesAndLanguages(refKey) {
     if (!this.state.userLocales) {
       sfConn
         .rest(`/services/data/v${apiVersion}/sobjects/User/describe`, {
@@ -3983,7 +3981,7 @@ class AllDataSelection extends React.PureComponent {
     }
   }
   getUrl(basePath, params) {
-    const {sfHost, selectedValue} = this.props;
+    const {sfHost} = this.props;
     const args = new URLSearchParams({host: sfHost, ...params});
     return `${basePath}?${args}`;
   }
@@ -4163,13 +4161,11 @@ class AllDataSelection extends React.PureComponent {
   render() {
     let {
       sfHost,
-      showDetailsSupported,
       contextRecordId,
       selectedValue,
       linkTarget,
       recordIdDetails,
       isFieldsPresent,
-      eventMonitorHref,
     } = this.props;
     let {flowDefinitionId} = this.state;
     // Show buttons for the available APIs.
@@ -4808,11 +4804,11 @@ class Autocomplete extends React.PureComponent {
     this.onScroll = this.onScroll.bind(this);
   }
   handleInput() {
-    this.setState({
+    this.setState(prevState => ({
       showResults: true,
       selectedIndex: 0,
-      scrollToSelectedIndex: this.state.scrollToSelectedIndex + 1,
-    });
+      scrollToSelectedIndex: prevState.scrollToSelectedIndex + 1,
+    }));
   }
   handleFocus() {
     let {recentItems} = this.props;
@@ -4864,12 +4860,12 @@ class Autocomplete extends React.PureComponent {
             itemsIds.add(recentItem.Id);
           }
         });
-        this.setState({
+        this.setState(prevState => ({
           recentItems,
           showResults: true,
           selectedIndex: 0,
-          scrollToSelectedIndex: this.state.scrollToSelectedIndex + 1,
-        });
+          scrollToSelectedIndex: prevState.scrollToSelectedIndex + 1,
+        }));
       });
   }
   handleBlur() {
@@ -4963,10 +4959,10 @@ class Autocomplete extends React.PureComponent {
     navigateWithExtensionCheck(e, url, navigationParams);
   }
   onResultMouseEnter(index) {
-    this.setState({
+    this.setState(prevState => ({
       selectedIndex: index,
-      scrollToSelectedIndex: this.state.scrollToSelectedIndex + 1,
-    });
+      scrollToSelectedIndex: prevState.scrollToSelectedIndex + 1,
+    }));
   }
   onScroll() {
     let scrollTopIndex = Math.floor(
@@ -5014,7 +5010,6 @@ class Autocomplete extends React.PureComponent {
       showResults,
       selectedIndex,
       scrollTopIndex,
-      itemHeight,
       resultsMouseIsDown,
     } = this.state;
 
